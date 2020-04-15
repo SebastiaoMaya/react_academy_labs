@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Tab from "./components/tabs/Tab";
+import Tabs from "./components/tabs/Tabs";
 
-function App() {
+const App = () => {
+  const [tab, setTab] = useState("home");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // <UserManager>
+    //   <div className="App-body">
+    //     <Header />
+    //     <Footer />
+    //     <LoginForm />
+    //   </div>
+    // </UserManager>
+    // <div className="App-body">
+    //   <Select>
+    //     <Option value="blue">Blue</Option>
+    //     <Option value="red">Red</Option>
+    //     <Option value="white">White</Option>
+    //   </Select>
+    // </div>
+    <div className="App-body">
+      <Tabs value={tab} onChange={setTab} initialValue="home">
+        <Tab value="home"> Home </Tab>
+        <Tab value="about"> About </Tab>
+        <Tab value="gallery"> Gallery </Tab>
+      </Tabs>
+      <button style={{ background: "white" }} onClick={() => setTab("gallery")}>
+        go to gallery
+      </button>
     </div>
   );
-}
+};
 
 export default App;
